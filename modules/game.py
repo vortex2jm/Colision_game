@@ -1,11 +1,11 @@
 
 #Bibliotecas utilizadas para a criação do game
-
 import pygame 
 from sys import exit
 from pygame.locals import*
 from random import randint
 import time
+
 
 #inicialização do game
 pygame.init()
@@ -33,10 +33,10 @@ font = pygame.font.SysFont('sans-serif', 20, bold=True, italic=False)
 
 
 #Inicializando som do game
-music = pygame.mixer.music.load('BoxCat Games - Passing Time.mp3')
+music = pygame.mixer.music.load('./media/BoxCat Games - Passing Time.mp3')
 pygame.mixer.music.play(-1)
 pygame.mixer.music.set_volume(0.5)
-colision_noise = pygame.mixer.Sound('smw_kick.wav')
+colision_noise = pygame.mixer.Sound('./media/smw_kick.wav')
 
 
 #Criando variáveis da dinâmica do game
@@ -65,14 +65,16 @@ while True: #gameloop
             if event.key == K_ESCAPE:
                 exit()
 
-    
-    if points >= 50:
+    exit_flag = False #flag de saída do loop final
+    #depois que a pontuação for atingida
+    if points >= 10:
         
         end = time.time()
         result_time = end - start
         time_text = f'Tempo = {round(result_time,2)} segundos'
         formated_time_text = font.render(time_text, False,(0,0,0))
 
+        
         while(1):
             pygame.draw.rect(window,(255, 102, 204), (100,153,400,50))
             window.blit(final_text, (130,170))
@@ -82,13 +84,17 @@ while True: #gameloop
             
             for event in pygame.event.get():
                 if event.type == QUIT:
-                    exit()
+                    exit_flag = True
                          
                 if event.type == KEYDOWN:
                     if event.key ==K_ESCAPE:
-                        exit()
-                        
+                        exit_flag = True
 
+            if exit_flag == True:
+                break                
+
+    if exit_flag == True: 
+        break
 
     #eventos de tecla pressionada
     if pygame.key.get_pressed()[K_DOWN]:
@@ -122,5 +128,3 @@ while True: #gameloop
 
     #Atualizando o display
     pygame.display.update()    
-
-
