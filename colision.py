@@ -25,7 +25,7 @@ with open("./data/score.txt","r") as score:
 if args.score:
     
     if len(content) == False:  #Caso não haja conteúdo no arquivo
-        print("Score vazio. Jogue uma rodada!")
+        print("Void score. Play the game!")
     else:
         count = 1
         for placar in content:  #imprimindo o rank
