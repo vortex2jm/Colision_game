@@ -24,7 +24,7 @@ y_purple = randint(15,370)
 #Inicialização e configuração da janela
 window = pygame.display.set_mode((largura, altura))   #criação
 window.fill((255,255,255))     #cor de fundo
-pygame.display.set_caption('Jogo de comer o cu de quem ta lendo')   #nome da janela
+pygame.display.set_caption('COLISION GAME')   #nome da janela
 clock = pygame.time.Clock() #criação da variável de frame rate
 
 
@@ -50,8 +50,8 @@ while True: #gameloop
 
 
     #Texto que aparecerá na tela
-    message = f"PONTOS: {points}"
-    final_message = "Parabéns, seu CU foi comido com sucesso!"
+    message = f"Score: {points}"
+    final_message = "CONGRATS, YO FINISHED THE GAME!"
     #Renderizando a fonte
     formated_text = font.render(message, True, (100,100,100))
     final_text = font.render(final_message, True, (0,0,0))
@@ -71,7 +71,7 @@ while True: #gameloop
         
         end = time.time()
         result_time = end - start
-        time_text = f'Tempo = {round(result_time,2)} segundos'
+        time_text = f'Time = {round(result_time,2)} seconds'
         formated_time_text = font.render(time_text, False,(0,0,0))
 
         
